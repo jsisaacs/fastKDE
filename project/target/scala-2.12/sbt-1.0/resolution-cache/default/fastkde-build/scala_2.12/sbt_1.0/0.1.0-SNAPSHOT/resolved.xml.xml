@@ -4,7 +4,7 @@
 		module="fastkde-build"
 		revision="0.1.0-SNAPSHOT"
 		status="integration"
-		publication="20180309000203"
+		publication="20180309004606"
 		e:sbtVersion="1.0" e:scalaVersion="2.12"
 	>
 		<description>

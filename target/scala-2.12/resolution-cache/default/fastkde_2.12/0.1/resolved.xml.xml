@@ -4,7 +4,7 @@
 		module="fastkde_2.12"
 		revision="0.1"
 		status="integration"
-		publication="20180309000213"
+		publication="20180309005704"
 	>
 		<description>
 		fastKDE
@@ -32,5 +32,7 @@
 	<dependencies>
 		<dependency org="org.scala-lang" name="scala-compiler" rev="2.12.4" conf="scala-tool->default,optional(default)"/>
 		<dependency org="org.scala-lang" name="scala-library" rev="2.12.4" conf="scala-tool->default,optional(default);compile->default(compile)"/>
+		<dependency org="org.nd4j" name="nd4j-native-platform" rev="0.9.1" conf="compile->default(compile)"/>
+		<dependency org="org.scalatest" name="scalatest_2.12" rev="3.0.5" conf="test->default(compile)"/>
 	</dependencies>
 </ivy-module>
