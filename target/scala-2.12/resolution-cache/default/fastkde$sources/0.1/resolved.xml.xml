@@ -4,7 +4,7 @@
 		module="fastkde$sources"
 		revision="0.1"
 		status="integration"
-		publication="20180301151951"
+		publication="20180309000213"
 	/>
 	<configurations>
 		<conf name="compile" visibility="public" description=""/>

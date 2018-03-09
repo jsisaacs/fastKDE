@@ -282,20 +282,36 @@
 [debug] 	resolved ivy file produced in cache
 [debug] :: downloading artifacts ::
 [debug] 	[NOT REQUIRED] org.scala-lang#scala-library;2.12.4!scala-library.jar(src)
-[debug] 	[NOT REQUIRED] jline#jline;2.14.5!jline.jar(src)
-[debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-xml_2.12;1.0.6!scala-xml_2.12.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-lang#scala-reflect;2.12.4!scala-reflect.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-lang#scala-compiler;2.12.4!scala-compiler.jar(src)
-[debug] :: resolution report :: resolve 18ms :: artifacts dl 13ms
-[debug] 	report for default#fastkde$sources;0.1 compile produced in /Users/joshisaacson/Desktop/Root/Projects/fastKDE/target/scala-2.12/resolution-cache/reports/default-fastkde$sources-compile.xml
-[debug] 	report for default#fastkde$sources;0.1 runtime produced in /Users/joshisaacson/Desktop/Root/Projects/fastKDE/target/scala-2.12/resolution-cache/reports/default-fastkde$sources-runtime.xml
-[debug] 	report for default#fastkde$sources;0.1 test produced in /Users/joshisaacson/Desktop/Root/Projects/fastKDE/target/scala-2.12/resolution-cache/reports/default-fastkde$sources-test.xml
-[debug] 	report for default#fastkde$sources;0.1 provided produced in /Users/joshisaacson/Desktop/Root/Projects/fastKDE/target/scala-2.12/resolution-cache/reports/default-fastkde$sources-provided.xml
-[debug] 	report for default#fastkde$sources;0.1 optional produced in /Users/joshisaacson/Desktop/Root/Projects/fastKDE/target/scala-2.12/resolution-cache/reports/default-fastkde$sources-optional.xml
-[debug] 	report for default#fastkde$sources;0.1 compile-internal produced in /Users/joshisaacson/Desktop/Root/Projects/fastKDE/target/scala-2.12/resolution-cache/reports/default-fastkde$sources-compile-internal.xml
-[debug] 	report for default#fastkde$sources;0.1 runtime-internal produced in /Users/joshisaacson/Desktop/Root/Projects/fastKDE/target/scala-2.12/resolution-cache/reports/default-fastkde$sources-runtime-internal.xml
-[debug] 	report for default#fastkde$sources;0.1 test-internal produced in /Users/joshisaacson/Desktop/Root/Projects/fastKDE/target/scala-2.12/resolution-cache/reports/default-fastkde$sources-test-internal.xml
-[debug] 	report for default#fastkde$sources;0.1 plugin produced in /Users/joshisaacson/Desktop/Root/Projects/fastKDE/target/scala-2.12/resolution-cache/reports/default-fastkde$sources-plugin.xml
-[debug] 	report for default#fastkde$sources;0.1 pom produced in /Users/joshisaacson/Desktop/Root/Projects/fastKDE/target/scala-2.12/resolution-cache/reports/default-fastkde$sources-pom.xml
-[debug] 	report for default#fastkde$sources;0.1 scala-tool produced in /Users/joshisaacson/Desktop/Root/Projects/fastKDE/target/scala-2.12/resolution-cache/reports/default-fastkde$sources-scala-tool.xml
-[debug] 	resolve done (18ms resolve - 13ms download)
+[debug] no default ivy user dir defined: set to /Users/joshisaacson/.ivy2
+[debug] 	[NOT REQUIRED] jline#jline;2.14.5!jline.jar(src)
+[debug] including url: jar:file:/Users/joshisaacson/.sbt/boot/scala-2.12.4/org.scala-sbt/sbt/1.1.1/ivy-2.3.0-sbt-b18f59ea3bc914a297bb6f1a4f7fb0ace399e310.jar!/org/apache/ivy/core/settings/ivysettings-public.xml
+[debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-xml_2.12;1.0.6!scala-xml_2.12.jar(src)
+[debug] no default cache defined: set to /Users/joshisaacson/.ivy2/cache
+[debug] including url: jar:file:/Users/joshisaacson/.sbt/boot/scala-2.12.4/org.scala-sbt/sbt/1.1.1/ivy-2.3.0-sbt-b18f59ea3bc914a297bb6f1a4f7fb0ace399e310.jar!/org/apache/ivy/core/settings/ivysettings-shared.xml
+[debug] including url: jar:file:/Users/joshisaacson/.sbt/boot/scala-2.12.4/org.scala-sbt/sbt/1.1.1/ivy-2.3.0-sbt-b18f59ea3bc914a297bb6f1a4f7fb0ace399e310.jar!/org/apache/ivy/core/settings/ivysettings-local.xml
+[debug] including url: jar:file:/Users/joshisaacson/.sbt/boot/scala-2.12.4/org.scala-sbt/sbt/1.1.1/ivy-2.3.0-sbt-b18f59ea3bc914a297bb6f1a4f7fb0ace399e310.jar!/org/apache/ivy/core/settings/ivysettings-main-chain.xml
+[debug] including url: jar:file:/Users/joshisaacson/.sbt/boot/scala-2.12.4/org.scala-sbt/sbt/1.1.1/ivy-2.3.0-sbt-b18f59ea3bc914a297bb6f1a4f7fb0ace399e310.jar!/org/apache/ivy/core/settings/ivysettings-default-chain.xml
+[debug] settings loaded (13ms)
+[debug] 	default cache: /Users/joshisaacson/.ivy2/cache
+[debug] 	default resolver: default
+[debug] 	-- 5 resolvers:
+[debug] 	shared [file]
+[debug] 	default [chain] [local, main]
+[debug] 	public [ibiblio]
+[debug] 	main [chain] [shared, public]
+[debug] 	local [file]
+[debug] :: resolution report :: resolve 17ms :: artifacts dl 32ms
+[debug] 	report for default#fastkde$sources;0.1 compile produced in /Users/joshisaacson/Desktop/Root/Coursework/C343-jsisaacs/Projects/fastKDE/target/scala-2.12/resolution-cache/reports/default-fastkde$sources-compile.xml
+[debug] 	report for default#fastkde$sources;0.1 runtime produced in /Users/joshisaacson/Desktop/Root/Coursework/C343-jsisaacs/Projects/fastKDE/target/scala-2.12/resolution-cache/reports/default-fastkde$sources-runtime.xml
+[debug] 	report for default#fastkde$sources;0.1 test produced in /Users/joshisaacson/Desktop/Root/Coursework/C343-jsisaacs/Projects/fastKDE/target/scala-2.12/resolution-cache/reports/default-fastkde$sources-test.xml
+[debug] 	report for default#fastkde$sources;0.1 provided produced in /Users/joshisaacson/Desktop/Root/Coursework/C343-jsisaacs/Projects/fastKDE/target/scala-2.12/resolution-cache/reports/default-fastkde$sources-provided.xml
+[debug] 	report for default#fastkde$sources;0.1 optional produced in /Users/joshisaacson/Desktop/Root/Coursework/C343-jsisaacs/Projects/fastKDE/target/scala-2.12/resolution-cache/reports/default-fastkde$sources-optional.xml
+[debug] 	report for default#fastkde$sources;0.1 compile-internal produced in /Users/joshisaacson/Desktop/Root/Coursework/C343-jsisaacs/Projects/fastKDE/target/scala-2.12/resolution-cache/reports/default-fastkde$sources-compile-internal.xml
+[debug] 	report for default#fastkde$sources;0.1 runtime-internal produced in /Users/joshisaacson/Desktop/Root/Coursework/C343-jsisaacs/Projects/fastKDE/target/scala-2.12/resolution-cache/reports/default-fastkde$sources-runtime-internal.xml
+[debug] 	report for default#fastkde$sources;0.1 test-internal produced in /Users/joshisaacson/Desktop/Root/Coursework/C343-jsisaacs/Projects/fastKDE/target/scala-2.12/resolution-cache/reports/default-fastkde$sources-test-internal.xml
+[debug] 	report for default#fastkde$sources;0.1 plugin produced in /Users/joshisaacson/Desktop/Root/Coursework/C343-jsisaacs/Projects/fastKDE/target/scala-2.12/resolution-cache/reports/default-fastkde$sources-plugin.xml
+[debug] 	report for default#fastkde$sources;0.1 pom produced in /Users/joshisaacson/Desktop/Root/Coursework/C343-jsisaacs/Projects/fastKDE/target/scala-2.12/resolution-cache/reports/default-fastkde$sources-pom.xml
+[debug] 	report for default#fastkde$sources;0.1 scala-tool produced in /Users/joshisaacson/Desktop/Root/Coursework/C343-jsisaacs/Projects/fastKDE/target/scala-2.12/resolution-cache/reports/default-fastkde$sources-scala-tool.xml
+[debug] 	resolve done (17ms resolve - 32ms download)
