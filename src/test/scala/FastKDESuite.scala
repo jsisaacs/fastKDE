@@ -1,10 +1,28 @@
 import org.scalatest.FunSuite
 
 class FastKDESuite extends FunSuite {
-  test("This is a practice test") {
-    val left = 2
-    val right = 2
-    assert(left == right)
+  test("arraySetup Test") {
+
+  }
+
+  test("optimizeGridsize Test") {
+
+  }
+
+  test("kernelPreliminaryCalculations Test") {
+
+  }
+
+  test("gaussianKernel Test") {
+
+  }
+
+  test("kdeEstimate Test") {
+
+  }
+
+  test("fastKDE Test") {
+
   }
 }
 
