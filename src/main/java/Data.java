@@ -94,13 +94,14 @@ public class Data {
     return this.weights;
   }
 
+  //TODO : use Nd4j.writeTxt to convert grid to JSON to plot in python
+
   public static void main(String[] args) throws IOException {
     double[] testArray = {1.0, 2.0, 3.0};
     INDArray testX = Nd4j.create(testArray);
     INDArray testY = Nd4j.create(testArray);
-    Data data = new Data(testX, testY);
-    DataSet dataSet = new DataSet(testX, testY);
+    //Data data = new Data(testX, testY);
     File file = new File("outputTest.txt");
-    dataSet.save(file);
+    Nd4j.writeTxt(testX, "output.json");
   }
 }
