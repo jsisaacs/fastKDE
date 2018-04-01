@@ -1,6 +1,11 @@
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.api.shape.Shape;
+import org.nd4j.linalg.dataset.DataSet;
 import org.nd4j.linalg.factory.Nd4j;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class Data {
   private INDArray x;
@@ -87,5 +92,15 @@ public class Data {
    */
   public INDArray getWeights() {
     return this.weights;
+  }
+
+  public static void main(String[] args) throws IOException {
+    double[] testArray = {1.0, 2.0, 3.0};
+    INDArray testX = Nd4j.create(testArray);
+    INDArray testY = Nd4j.create(testArray);
+    Data data = new Data(testX, testY);
+    DataSet dataSet = new DataSet(testX, testY);
+    File file = new File("outputTest.txt");
+    dataSet.save(file);
   }
 }

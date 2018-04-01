@@ -11,4 +11,5 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile 'org.nd4j:nd4j-native-platform:0.9.1'
+    compile group: 'org.javatuples', name: 'javatuples', version: '1.2'
 }

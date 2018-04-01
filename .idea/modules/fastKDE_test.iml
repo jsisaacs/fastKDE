@@ -11,6 +11,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="fastKDE_main" />
     <orderEntry type="library" name="Gradle: org.nd4j:nd4j-native-platform:0.9.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.javatuples:javatuples:1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.nd4j:nd4j-native:0.9.1" level="project" />
     <orderEntry type="library" name="Gradle: org.nd4j:nd4j-native:android-arm:0.9.1" level="project" />
     <orderEntry type="library" name="Gradle: org.nd4j:nd4j-native:android-x86:0.9.1" level="project" />
