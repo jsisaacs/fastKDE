@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/fastKDE.iml" filepath="$PROJECT_DIR$/.idea/modules/fastKDE.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/fastKDE_main.iml" filepath="$PROJECT_DIR$/.idea/modules/fastKDE_main.iml" group="fastKDE" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/fastKDE_test.iml" filepath="$PROJECT_DIR$/.idea/modules/fastKDE_test.iml" group="fastKDE" />
+      <module fileurl="file://$PROJECT_DIR$/visualization/visualization.iml" filepath="$PROJECT_DIR$/visualization/visualization.iml" group="fastKDE" />
     </modules>
   </component>
 </project>

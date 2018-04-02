@@ -3,6 +3,6 @@ TODO
 
 - implement custom extents for the Grid
 - get the indices of the bins for each point as a 2d array
-- make a 2d histogram of x and y with coo_matrix
+- make a 2d histogram of x and y with coo_matrix with Bokeh
 - calculate covariance matrix
 - scaling factor for bandwidth

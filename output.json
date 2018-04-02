@@ -1,6 +1,6 @@
 {
-"filefrom": "dl4j",
-"ordering": "c",
+"filefrom:" "dl4j",
+"ordering:" "c",
 "shape":	[1, 3],
 "data":
 [1.00 ,   2.00 ,   3.00]
