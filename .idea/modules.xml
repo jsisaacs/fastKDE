@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/FastKde.iml" filepath="$PROJECT_DIR$/.idea/modules/FastKde.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/FastKde_main.iml" filepath="$PROJECT_DIR$/.idea/modules/FastKde_main.iml" group="FastKde" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/FastKde_test.iml" filepath="$PROJECT_DIR$/.idea/modules/FastKde_test.iml" group="FastKde" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fastKde.iml" filepath="$PROJECT_DIR$/.idea/modules/fastKde.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fastKde_main.iml" filepath="$PROJECT_DIR$/.idea/modules/fastKde_main.iml" group="fastKde" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fastKde_test.iml" filepath="$PROJECT_DIR$/.idea/modules/fastKde_test.iml" group="fastKde" />
     </modules>
   </component>
 </project>
