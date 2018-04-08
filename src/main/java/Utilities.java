@@ -2,11 +2,13 @@ import com.google.common.math.DoubleMath;
 import org.javatuples.Pair;
 import org.javatuples.Quartet;
 import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.convolution.Convolution;
 import org.nd4j.linalg.dimensionalityreduction.PCA;
 import org.nd4j.linalg.factory.Nd4j;
 import org.nd4j.linalg.inverse.InvertMatrix;
 import org.nd4j.linalg.ops.transforms.Transforms;
 import org.nd4j.linalg.util.BigDecimalMath;
+import static org.nd4j.linalg.convolution.Convolution.Type.SAME;
 //import org.nd4j.linalg.api.ops.DynamicCustomOp;
 
 public class Utilities {
@@ -57,7 +59,7 @@ public class Utilities {
     return Transforms.round(standardDeviations.mul(scottsFactor * 2 * BigDecimalMath.PI.doubleValue()));
   }
 
-  public static INDArray getBandwidth(INDArray x, INDArray covariance, double scottsFactor, double adjust) {
+  public static INDArray getBandwidth(INDArray covariance, double scottsFactor) {
     return InvertMatrix.invert(covariance.mul(Math.pow(scottsFactor, 2)), false);
   }
 
@@ -74,17 +76,20 @@ public class Utilities {
     return new Pair<>(X, Y);
   }
 
+  public static INDArray getKernel(double kernNx, double kernNy, INDArray X, INDArray Y, INDArray bandwidth) {
+    INDArray XFlattened = Nd4j.toFlattened(X);
+    INDArray YFlattened = Nd4j.toFlattened(Y);
 
+    INDArray kernel = Nd4j.vstack(XFlattened, YFlattened);
+    kernel = bandwidth.mmul(kernel).mul(kernel);
+    kernel = Nd4j.sum(kernel, 0).div(2.0);
+    kernel = Transforms.exp(kernel.mul(-1.0));
+    kernel = kernel.reshape((int) kernNy, (int) kernNx);
 
+    return kernel;
+  }
 
-
-//  public static INDArray getKernel(Pair<INDArray, INDArray> meshGrid,
-//                                    INDArray bandwidth,
-//                                    INDArray standardDeviations,
-//                                    double scottsFactor) {
-//    INDArray kernel = Nd4j.vstack(Nd4j.toFlattened(meshGrid.getValue0()),
-//            Nd4j.toFlattened(meshGrid.getValue1()));
-//    System.out.println(kernel);
-//    return null;
-//  }
+  public static INDArray convolveGrid(INDArray grid, INDArray kernel) {
+    return Convolution.conv2d(grid, kernel, SAME);
+  }
 }

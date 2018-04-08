@@ -1,9 +1,7 @@
 import org.javatuples.Pair;
 import org.javatuples.Quartet;
 import org.junit.Test;
-import org.nd4j.compression.impl.Uint8;
 import org.nd4j.linalg.api.ndarray.INDArray;
-import org.nd4j.linalg.cpu.nativecpu.NDArray;
 import org.nd4j.linalg.factory.Nd4j;
 import static org.junit.Assert.assertEquals;
 
@@ -89,19 +87,16 @@ public class UtilitiesTest {
 
   @Test
   public void getBandwidthTest() {
-    //TODO
-    INDArray x = Nd4j.create(new double[] {1., 2., 3., 4.});
     INDArray covariance = Nd4j.create(new double[][] {
             {12., 13.},
             {14., 15.}
     });
     double scottsFactor = 0.75;
-    double adjust = 1.;
     INDArray bandwidth = Nd4j.create(new double[][] {
             {-13.33, 11.56},
             {12.44, -10.67}
     });
-    assertEquals(bandwidth, Utilities.getBandwidth(x, covariance, scottsFactor, adjust));
+    assertEquals(bandwidth, Utilities.getBandwidth(covariance, scottsFactor));
   }
 
   @Test
@@ -123,9 +118,33 @@ public class UtilitiesTest {
     assertEquals(Y, meshGrid.getValue1());
   }
 
-  //@Test
+  @Test
   public void getKernelTest() {
-    //TODO
+    INDArray X = Nd4j.create(new double[][] {
+            {0., 0.5, 1.},
+            {0., 0.5, 1.}
+    });
+    INDArray Y = Nd4j.create(new double[][] {
+            {0., 0., 0.},
+            {1., 1., 1.}
+    });
+    INDArray bandwidth = Nd4j.create(new double[][] {
+            {-13.33, 11.56},
+            {12.44, -10.67}
+    });
+    INDArray kernN = Nd4j.create(new double[] {2., 3.});
+    double kernNx = kernN.getDouble(0, 0);
+    double kernNy = kernN.getDouble(0, 1);
+    INDArray kernel = Nd4j.create(new double[][] {
+            {1., 5.29},
+            {784.46, 207.47},
+            {2.72, 1.}
+    });
+    assertEquals(kernel, Utilities.getKernel(kernNx, kernNy, X, Y, bandwidth));
   }
 
+  @Test
+  public void convolveGridTest() {
+
+  }
 }
