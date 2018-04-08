@@ -7,6 +7,7 @@ import org.nd4j.linalg.factory.Nd4j;
 import org.nd4j.linalg.inverse.InvertMatrix;
 import org.nd4j.linalg.ops.transforms.Transforms;
 import org.nd4j.linalg.util.BigDecimalMath;
+//import org.nd4j.linalg.api.ops.DynamicCustomOp;
 
 public class Utilities {
   public static int optimizeGridSize(int gridSize, int xLength) {
@@ -57,24 +58,24 @@ public class Utilities {
   }
 
   public static INDArray getBandwidth(INDArray x, INDArray covariance, double scottsFactor, double adjust) {
-    return InvertMatrix.invert(covariance.mul(Math.pow(scottsFactor, 2)), true);
+    return InvertMatrix.invert(covariance.mul(Math.pow(scottsFactor, 2)), false);
   }
 
-//  public static Pair<INDArray, INDArray> getMeshGrid(INDArray x, INDArray y) {
-//    int numRows = y.length();
-//    int numCols = x.length();
-//
-//    x = x.reshape(1, numCols);
-//    y = y.reshape(numRows, 1);
-//
-//    INDArray X = x.repeat(0, numRows);
-//    INDArray Y = y.repeat(1, numCols);
-//
-//    return new Pair<>(X, Y);
-//  }
-//
-//
-//
+  public static Pair<INDArray, INDArray> getMeshGrid(INDArray xCoords, INDArray yCoords) {
+    int numRows = yCoords.length();
+    int numCols = xCoords.length();
+
+    xCoords = xCoords.reshape(1, numCols);
+    yCoords = yCoords.reshape(numRows, 1);
+
+    INDArray X = xCoords.repeat(0, numRows);
+    INDArray Y = yCoords.repeat(1, numCols);
+
+    return new Pair<>(X, Y);
+  }
+
+
+
 
 
 //  public static INDArray getKernel(Pair<INDArray, INDArray> meshGrid,

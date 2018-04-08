@@ -1,9 +1,11 @@
+import org.javatuples.Pair;
 import org.javatuples.Quartet;
 import org.junit.Test;
+import org.nd4j.compression.impl.Uint8;
 import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.cpu.nativecpu.NDArray;
 import org.nd4j.linalg.factory.Nd4j;
-
-import static junit.framework.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public class UtilitiesTest {
   @Test
@@ -64,8 +66,7 @@ public class UtilitiesTest {
   public void getScottsFactorTest() {
     INDArray x = Nd4j.create(new double[] {1., 2., 3., 4.});
     double adjust = 1.;
-
-    assertEquals(0.7937005259840998, Utilities.getScottsFactor(x.length(), adjust));
+    assertEquals(0.7937005259840998, Utilities.getScottsFactor(x.length(), adjust), 0.00001);
   }
 
   @Test
@@ -86,14 +87,40 @@ public class UtilitiesTest {
     assertEquals(kernN, Utilities.getKernN(standardDeviations, scottsFactor));
   }
 
-  //@Test
+  @Test
   public void getBandwidthTest() {
     //TODO
+    INDArray x = Nd4j.create(new double[] {1., 2., 3., 4.});
+    INDArray covariance = Nd4j.create(new double[][] {
+            {12., 13.},
+            {14., 15.}
+    });
+    double scottsFactor = 0.75;
+    double adjust = 1.;
+    INDArray bandwidth = Nd4j.create(new double[][] {
+            {-13.33, 11.56},
+            {12.44, -10.67}
+    });
+    assertEquals(bandwidth, Utilities.getBandwidth(x, covariance, scottsFactor, adjust));
   }
 
-  //@Test
+  @Test
   public void getMeshGridTest() {
-    //TODO
+    int nx = 3;
+    int ny = 2;
+    INDArray x = Nd4j.linspace(0, 1, nx);
+    INDArray y = Nd4j.linspace(0, 1, ny);
+    INDArray X = Nd4j.create(new double[][] {
+            {0., 0.5, 1.},
+            {0., 0.5, 1.}
+    });
+    INDArray Y = Nd4j.create(new double[][] {
+            {0., 0., 0.},
+            {1., 1., 1.}
+    });
+    Pair<INDArray, INDArray> meshGrid = Utilities.getMeshGrid(x, y);
+    assertEquals(X, meshGrid.getValue0());
+    assertEquals(Y, meshGrid.getValue1());
   }
 
   //@Test
