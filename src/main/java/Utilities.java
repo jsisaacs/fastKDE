@@ -9,10 +9,12 @@ import org.nd4j.linalg.inverse.InvertMatrix;
 import org.nd4j.linalg.ops.transforms.Transforms;
 import org.nd4j.linalg.util.BigDecimalMath;
 import static org.nd4j.linalg.convolution.Convolution.Type.SAME;
-//import org.nd4j.linalg.api.ops.DynamicCustomOp;
+import org.nd4j.linalg.api.ops.DynamicCustomOp;
+import org.nd4j.linalg.api.ops.CustomOp;
 
 public class Utilities {
-  public static int optimizeGridSize(int gridSize, int xLength) {
+  public static int optimizeGridSize(int gridSize,
+                                     int xLength) {
     if (gridSize <= 0 || xLength <= 0) {
       throw new IllegalArgumentException("Arguments must be greater than 0.");
     }
@@ -35,7 +37,8 @@ public class Utilities {
     return bins;
   }
 
-  public static INDArray getCovariance(INDArray bins, boolean noCorrelation) {
+  public static INDArray getCovariance(INDArray bins,
+                                       boolean noCorrelation) {
     INDArray[] covarianceMatrix = PCA.covarianceMatrix(bins);
     INDArray covariance = covarianceMatrix[0];
 
@@ -47,7 +50,8 @@ public class Utilities {
     return covariance;
   }
 
-  public static double getScottsFactor(int xLength, double adjust) {
+  public static double getScottsFactor(int xLength,
+                                       double adjust) {
     return Math.pow(xLength, (-1. / 6.)) * adjust;
   }
 
@@ -55,15 +59,18 @@ public class Utilities {
     return Nd4j.diag(Transforms.sqrt(covariance));
   }
 
-  public static INDArray getKernN(INDArray standardDeviations, double scottsFactor) {
+  public static INDArray getKernN(INDArray standardDeviations,
+                                  double scottsFactor) {
     return Transforms.round(standardDeviations.mul(scottsFactor * 2 * BigDecimalMath.PI.doubleValue()));
   }
 
-  public static INDArray getBandwidth(INDArray covariance, double scottsFactor) {
+  public static INDArray getBandwidth(INDArray covariance,
+                                      double scottsFactor) {
     return InvertMatrix.invert(covariance.mul(Math.pow(scottsFactor, 2)), false);
   }
 
-  public static Pair<INDArray, INDArray> getMeshGrid(INDArray xCoords, INDArray yCoords) {
+  public static Pair<INDArray, INDArray> getMeshGrid(INDArray xCoords,
+                                                     INDArray yCoords) {
     int numRows = yCoords.length();
     int numCols = xCoords.length();
 
@@ -76,11 +83,16 @@ public class Utilities {
     return new Pair<>(X, Y);
   }
 
-  public static INDArray getKernel(double kernNx, double kernNy, INDArray X, INDArray Y, INDArray bandwidth) {
+  public static INDArray getKernel(double kernNx,
+                                   double kernNy,
+                                   INDArray X,
+                                   INDArray Y,
+                                   INDArray bandwidth) {
     INDArray XFlattened = Nd4j.toFlattened(X);
     INDArray YFlattened = Nd4j.toFlattened(Y);
 
-    INDArray kernel = Nd4j.vstack(XFlattened, YFlattened);
+    INDArray kernel = Nd4j.vstack(XFlattened,
+            YFlattened);
     kernel = bandwidth.mmul(kernel).mul(kernel);
     kernel = Nd4j.sum(kernel, 0).div(2.0);
     kernel = Transforms.exp(kernel.mul(-1.0));
@@ -89,7 +101,30 @@ public class Utilities {
     return kernel;
   }
 
-  public static INDArray convolveGrid(INDArray grid, INDArray kernel) {
+  //TODO
+  public static INDArray convolveGrid(INDArray grid,
+                                      INDArray kernel) {
     return Convolution.conv2d(grid, kernel, SAME);
+  }
+  //TODO
+  public static INDArray getNormalizationFactor(INDArray covariance,
+                                                double scottsFactor,
+                                                int n,
+                                                double deltaX,
+                                                double deltaY) {
+    INDArray normalizationFactor = covariance.mul(2 * BigDecimalMath.PI.doubleValue()).mul(Math.pow(scottsFactor, 2));
+
+    //TODO : for some reason this returns the correct value but not negative
+    INDArray det = Nd4j.create(new double[] {0.});
+    CustomOp determinant = DynamicCustomOp.builder("matrix_determinant")
+            .addInputs(normalizationFactor)
+            .addOutputs(det)
+            .build();
+    Nd4j.getExecutioner().exec(determinant);
+    normalizationFactor = det;
+
+    normalizationFactor = Transforms.sqrt(normalizationFactor).mul(n * deltaX * deltaY);
+
+    return normalizationFactor;
   }
 }

@@ -93,8 +93,8 @@ public class UtilitiesTest {
     });
     double scottsFactor = 0.75;
     INDArray bandwidth = Nd4j.create(new double[][] {
-            {-13.33, 11.56},
-            {12.44, -10.67}
+            {-13.3333, 11.5556},
+            {12.4444, -10.6667}
     });
     assertEquals(bandwidth, Utilities.getBandwidth(covariance, scottsFactor));
   }
@@ -136,15 +136,26 @@ public class UtilitiesTest {
     double kernNx = kernN.getDouble(0, 0);
     double kernNy = kernN.getDouble(0, 1);
     INDArray kernel = Nd4j.create(new double[][] {
-            {1., 5.29},
-            {784.46, 207.47},
-            {2.72, 1.}
+            {1., 5.2923},
+            {784.4634, 207.4728},
+            {2.7217, 1.}
     });
     assertEquals(kernel, Utilities.getKernel(kernNx, kernNy, X, Y, bandwidth));
   }
 
   @Test
   public void convolveGridTest() {
+
+  }
+
+  @Test
+  public void normalizationFactorTest() {
+    INDArray covariance = Nd4j.create(new double[][] {
+            {12., 13.},
+            {14., 15.}
+    });
+    double scottsFactor = 0.75;
+    System.out.println(Utilities.getNormalizationFactor(covariance, scottsFactor, 4, 0.5, 0.5));
 
   }
 }

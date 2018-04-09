@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.nd4j:nd4j-native:linux-ppc64le:1.0.0-alpha">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.nd4j/nd4j-native/1.0.0-alpha/19c2d62854157f88161dca16f85013239eebeee3/nd4j-native-1.0.0-alpha-linux-ppc64le.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.nd4j/nd4j-native/1.0.0-alpha/c1068e628912455add0f0a9556f58bb4c23c0f71/nd4j-native-1.0.0-alpha-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
