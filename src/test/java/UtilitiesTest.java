@@ -2,7 +2,9 @@ import org.javatuples.Pair;
 import org.javatuples.Quartet;
 import org.junit.Test;
 import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.dimensionalityreduction.PCA;
 import org.nd4j.linalg.factory.Nd4j;
+
 import static org.junit.Assert.assertEquals;
 
 public class UtilitiesTest {
@@ -42,6 +44,28 @@ public class UtilitiesTest {
 
     //large inputs
     //TODO
+  }
+
+  @Test
+  public void basicCovarianceTest() {
+    INDArray x = Nd4j.create(new double[][] {
+            {0., 1.},
+            {2., 1.}
+    });
+    System.out.println("Input: ");
+    System.out.println(x);
+    System.out.println("------");
+    System.out.println("Nd4j Covariance Matrix: ");
+    System.out.println(PCA.covarianceMatrix(x)[0]);
+    //x = PCA.covarianceMatrix(x)[0];
+    //System.out.println(x);
+    System.out.println("------");
+    System.out.println("Numpy Covariance Matrix: ");
+    System.out.println("[[ 0.5 -0.5]\n" +
+                       " [-0.5  0.5]]");
+    System.out.println("------");
+    INDArray[] pc = PCA.principalComponents(PCA.covarianceMatrix(x)[0]);
+    System.out.println(pc[1]);
   }
 
   @Test
@@ -113,6 +137,7 @@ public class UtilitiesTest {
             {0., 0., 0.},
             {1., 1., 1.}
     });
+
     Pair<INDArray, INDArray> meshGrid = Utilities.getMeshGrid(x, y);
     assertEquals(X, meshGrid.getValue0());
     assertEquals(Y, meshGrid.getValue1());
@@ -145,7 +170,15 @@ public class UtilitiesTest {
 
   @Test
   public void convolveGridTest() {
-
+    //TODO
+    INDArray divArray = Nd4j.create(new double[] {1., 2.});
+    INDArray mainArray = Nd4j.create(new double[][] {
+            {2., 4.},
+            {6., 8.},
+            {10., 12.}
+    });
+    mainArray.diviRowVector(divArray);
+    System.out.println(mainArray);
   }
 
   @Test
