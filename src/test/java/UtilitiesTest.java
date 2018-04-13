@@ -2,8 +2,14 @@ import org.javatuples.Pair;
 import org.javatuples.Quartet;
 import org.junit.Test;
 import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.api.ops.CustomOp;
+import org.nd4j.linalg.api.ops.DynamicCustomOp;
+import org.nd4j.linalg.api.ops.impl.layers.convolution.Conv2D;
+import org.nd4j.linalg.api.ops.impl.layers.convolution.config.Conv2DConfig;
+import org.nd4j.linalg.cpu.nativecpu.NDArray;
 import org.nd4j.linalg.dimensionalityreduction.PCA;
 import org.nd4j.linalg.factory.Nd4j;
+import org.nd4j.linalg.convolution.Convolution;
 
 import static org.junit.Assert.assertEquals;
 
@@ -47,40 +53,20 @@ public class UtilitiesTest {
   }
 
   @Test
-  public void basicCovarianceTest() {
-    INDArray x = Nd4j.create(new double[][] {
-            {0., 1.},
-            {2., 1.}
-    });
-    System.out.println("Input: ");
-    System.out.println(x);
-    System.out.println("------");
-    System.out.println("Nd4j Covariance Matrix: ");
-    System.out.println(PCA.covarianceMatrix(x)[0]);
-    //x = PCA.covarianceMatrix(x)[0];
-    //System.out.println(x);
-    System.out.println("------");
-    System.out.println("Numpy Covariance Matrix: ");
-    System.out.println("[[ 0.5 -0.5]\n" +
-                       " [-0.5  0.5]]");
-    System.out.println("------");
-    INDArray[] pc = PCA.principalComponents(PCA.covarianceMatrix(x)[0]);
-    System.out.println(pc[1]);
-  }
-
-  @Test
   public void getCovarianceTest() {
     INDArray x = Nd4j.create(new double[] {1., 2., 3., 4.});
     INDArray y = Nd4j.create(new double[] {5., 6., 7., 8.});
     INDArray covariance = Nd4j.create(new double[][] {
-            {12041.66666667, 12041.66666667},
-            {12041.66666667, 12041.66666667}
+            {2.5288, 2.5288},
+            {2.5288, 2.5288}
     });
     Quartet<Double, Double, Double, Double> extents = new Quartet<>(
             x.minNumber().doubleValue(),
             x.maxNumber().doubleValue(),
             y.minNumber().doubleValue(),
             y.maxNumber().doubleValue());
+
+    System.out.println(Utilities.getBins(x, y, 0.011764705882352941, 0.011764705882352941, extents));
     assertEquals(covariance, Utilities.getCovariance(Utilities.getBins(x, y, 0.011764705882352941, 0.011764705882352941, extents), false));
   }
 
@@ -170,15 +156,30 @@ public class UtilitiesTest {
 
   @Test
   public void convolveGridTest() {
-    //TODO
-    INDArray divArray = Nd4j.create(new double[] {1., 2.});
-    INDArray mainArray = Nd4j.create(new double[][] {
-            {2., 4.},
-            {6., 8.},
-            {10., 12.}
+//    INDArray grid = Nd4j.ones(3, 3);
+//    INDArray kernel = Nd4j.ones(4, 4);
+//    INDArray output = Nd4j.zeros(6, 6);
+//
+//    assertEquals(output, Utilities.convolveGrid(grid, kernel));
+    INDArray input = Nd4j.create(new double[][]{
+            {3, 2, 5, 6, 7, 8},
+            {5, 4, 2, 10, 8, 1}
     });
-    mainArray.diviRowVector(divArray);
-    System.out.println(mainArray);
+    INDArray kernel = Nd4j.create(new double[][]{
+            {4, 5},
+            {1, 2}
+    });
+    INDArray output = Nd4j.ones(input.rows(), input.columns());
+
+    CustomOp convolve2d = Conv2D.builder()
+            .sameDiff()
+            .inputFunctions()
+            .inputArrays()
+            .outputs(output)
+            .config(config)
+            .build();
+    Nd4j.getExecutioner().exec(convolve2d);
+
   }
 
   @Test

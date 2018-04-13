@@ -51,6 +51,7 @@ public class FastKde {
     INDArray grid = Nd4j.zeros(gridSize, gridSize);
     System.out.println("grid");
     System.out.println(grid);
+    System.out.println(grid.rows() + ", " + grid.columns());
     //INDArray grid = Nd4j.createSparseCOO( , gridIndices, new int[] {gridSize, gridSize});
 
     //------------------------------------------ Kernel preliminary calculations -----------------------------------
@@ -77,13 +78,19 @@ public class FastKde {
     System.out.println("Bandwidth");
     System.out.println(bandwidth);
 
-
     INDArray xCoords = Nd4j.arange(kernNx).sub(kernNx / 2.0);
     INDArray yCoords = Nd4j.arange(kernNy).sub(kernNy / 2.0);
     Pair<INDArray, INDArray> meshGrid = Utilities.getMeshGrid(xCoords, yCoords);
+    System.out.println(meshGrid.getValue0().rows() + ", " + meshGrid.getValue0().columns());
+    System.out.println(meshGrid.getValue1().rows() + ", " + meshGrid.getValue1().columns());
+    System.out.println(meshGrid.getValue0());
+    System.out.println("---------------------------------");
+    System.out.println(meshGrid.getValue1());
 
-    INDArray kernel = Utilities.getKernel(kernNx, kernNy,
+     INDArray kernel = Utilities.getKernel(kernNx, kernNy,
             meshGrid.getValue0(), meshGrid.getValue1(), bandwidth);
+
+    System.out.println(kernel.rows() + ", " + kernel.columns());
 
     //------------------------------------------ Produce the kernel density estimate -------------------------------
 

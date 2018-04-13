@@ -8,7 +8,7 @@ import org.nd4j.linalg.factory.Nd4j;
 import org.nd4j.linalg.inverse.InvertMatrix;
 import org.nd4j.linalg.ops.transforms.Transforms;
 import org.nd4j.linalg.util.BigDecimalMath;
-import static org.nd4j.linalg.convolution.Convolution.Type.SAME;
+import static org.nd4j.linalg.convolution.Convolution.Type.*;
 import org.nd4j.linalg.api.ops.DynamicCustomOp;
 import org.nd4j.linalg.api.ops.CustomOp;
 
@@ -39,6 +39,7 @@ public class Utilities {
 
   public static INDArray getCovariance(INDArray bins,
                                        boolean noCorrelation) {
+    bins = bins.transpose();
     INDArray[] covarianceMatrix = PCA.covarianceMatrix(bins);
     INDArray covariance = covarianceMatrix[0];
 
@@ -56,7 +57,7 @@ public class Utilities {
   }
 
   public static INDArray getStandardDeviations(INDArray covariance) {
-    return Nd4j.diag(Transforms.sqrt(covariance));
+    return Transforms.sqrt(covariance).getRow(0);
   }
 
   public static INDArray getKernN(INDArray standardDeviations,
@@ -104,7 +105,7 @@ public class Utilities {
   //TODO
   public static INDArray convolveGrid(INDArray grid,
                                       INDArray kernel) {
-    return Convolution.conv2d(grid, kernel, SAME);
+    return Convolution.conv2d(kernel, grid, SAME);
   }
   //TODO
   public static INDArray getNormalizationFactor(INDArray covariance,
