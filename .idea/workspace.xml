@@ -2,12 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db6fe935-bd1b-4364-965e-66b1f0b0db15" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/UtilitiesTest.class" afterPath="$PROJECT_DIR$/out/test/classes/UtilitiesTest.class" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FastKde.java" afterPath="$PROJECT_DIR$/src/main/java/FastKde.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities.java" afterPath="$PROJECT_DIR$/src/main/java/Utilities.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/FastKdeTest.java" afterPath="$PROJECT_DIR$/src/test/java/FastKdeTest.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/UtilitiesTest.java" afterPath="$PROJECT_DIR$/src/test/java/UtilitiesTest.java" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid11852.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid11877.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid13567.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid13572.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid13586.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid13604.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid13612.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid13618.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid13627.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid13664.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid13713.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid13717.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid13729.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid13734.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid13747.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid13767.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hs_err_pid13781.log" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -98,8 +109,8 @@
           <file leaf-file-name="FastKde.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/FastKde.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="86">
-                  <caret line="107" column="42" lean-forward="false" selection-start-line="107" selection-start-column="42" selection-end-line="107" selection-end-column="42" />
+                <state relative-caret-position="2359">
+                  <caret line="116" column="8" lean-forward="false" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="8" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -548,9 +559,9 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="272" />
-    <option name="width" value="1165" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1" />
+    <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -641,7 +652,7 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -654,7 +665,23 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="fastKde" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fastKde" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -918,7 +945,7 @@
       <workItem from="1523500406661" duration="11526000" />
       <workItem from="1523580076883" duration="9284000" />
       <workItem from="1523638867626" duration="731000" />
-      <workItem from="1523673623649" duration="21032000" />
+      <workItem from="1523673623649" duration="21335000" />
     </task>
     <servers />
   </component>
@@ -955,10 +982,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123942000" />
+    <option name="totallyTimeSpent" value="124245000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="0" width="1440" height="900" extended-state="6" />
+    <frame x="1" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -974,7 +1001,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1656017" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16523606" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991803" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921347" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32888147" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1417,8 +1444,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/FastKde.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="107" column="42" lean-forward="false" selection-start-line="107" selection-start-column="42" selection-end-line="107" selection-end-column="42" />
+        <state relative-caret-position="2359">
+          <caret line="116" column="8" lean-forward="false" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
