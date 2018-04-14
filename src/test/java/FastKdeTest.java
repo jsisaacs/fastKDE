@@ -16,6 +16,7 @@ public class FastKdeTest {
     System.out.println(x);
     INDArray y = Nd4j.create(new double[] {0.7747,    0.7053,    0.5655,    0.6056,    0.1807,    0.0696,    0.1127,    0.4404,    0.6015,    0.6682});
     System.out.println(y);
-    System.out.println(FastKde.fastKde2d(x, y));
+    INDArray grid = FastKde.fastKde2d(x, y);
+
   }
 }

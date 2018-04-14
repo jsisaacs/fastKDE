@@ -1,14 +1,15 @@
 import com.google.common.math.DoubleMath;
 import org.javatuples.Pair;
 import org.javatuples.Quartet;
+import org.nd4j.autodiff.samediff.SDVariable;
+import org.nd4j.autodiff.samediff.SameDiff;
 import org.nd4j.linalg.api.ndarray.INDArray;
-import org.nd4j.linalg.convolution.Convolution;
+import org.nd4j.linalg.api.ops.impl.layers.convolution.config.Conv2DConfig;
 import org.nd4j.linalg.dimensionalityreduction.PCA;
 import org.nd4j.linalg.factory.Nd4j;
 import org.nd4j.linalg.inverse.InvertMatrix;
 import org.nd4j.linalg.ops.transforms.Transforms;
 import org.nd4j.linalg.util.BigDecimalMath;
-import static org.nd4j.linalg.convolution.Convolution.Type.*;
 import org.nd4j.linalg.api.ops.DynamicCustomOp;
 import org.nd4j.linalg.api.ops.CustomOp;
 
@@ -18,8 +19,9 @@ public class Utilities {
     if (gridSize <= 0 || xLength <= 0) {
       throw new IllegalArgumentException("Arguments must be greater than 0.");
     }
+    //514 because 512 returns an error for convolve2d, pairwise
     if(gridSize == 200) {
-      gridSize = Math.max(xLength, 512);
+      gridSize = Math.max(xLength, 514);
     }
     gridSize = (int) Math.pow(2, Math.ceil(DoubleMath.log2(gridSize)));
     return gridSize;
@@ -42,6 +44,7 @@ public class Utilities {
     bins = bins.transpose();
     INDArray[] covarianceMatrix = PCA.covarianceMatrix(bins);
     INDArray covariance = covarianceMatrix[0];
+    covariance = covariance.div(10000);
 
     if (noCorrelation) {
       covariance.putScalar(new int[] {1,0}, 0.0);
@@ -102,10 +105,40 @@ public class Utilities {
     return kernel;
   }
 
-  //TODO
   public static INDArray convolveGrid(INDArray grid,
                                       INDArray kernel) {
-    return Convolution.conv2d(kernel, grid, SAME);
+    int nIn = 1;
+    int nOut = 1;
+    int kH = kernel.rows();
+    int kW = kernel.columns();
+
+    int mb = 1;
+    int imgH = grid.rows();
+    int imgW = grid.columns();
+
+    SameDiff sd = SameDiff.create();
+    INDArray wArr = Nd4j.ones(nOut, nIn, kH, kW);
+    wArr = wArr.mul(kernel);
+    INDArray bArr = Nd4j.ones(1, nOut);
+    INDArray inArr = Nd4j.ones(mb, nIn, imgH, imgW);
+    inArr = inArr.mul(grid);
+
+    SDVariable in = sd.var("in", inArr);
+    SDVariable w = sd.var("W", wArr);
+    SDVariable b = sd.var("b", bArr);
+
+    SDVariable[] vars = new SDVariable[]{in, w, b};
+
+    Conv2DConfig c = Conv2DConfig.builder()
+            .kh(kH).kw(kW)
+            .ph(0).pw(0)
+            .sy(1).sx(1)
+            .dh(1).dw(1)
+            .isSameMode(true)
+            .build();
+    sd.conv2d(vars, c);
+    System.out.println("DONE");
+    return sd.execAndEndResult();
   }
   //TODO
   public static INDArray getNormalizationFactor(INDArray covariance,

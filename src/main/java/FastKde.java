@@ -30,7 +30,8 @@ public class FastKde {
 
     //---------------------------------------- Optimize grid size --------------------------------------------------
 
-    gridSize = Utilities.optimizeGridSize(gridSize, x.length());
+    //gridSize = Utilities.optimizeGridSize(gridSize, x.length());
+    gridSize = 514;
 
     //---------------------------------------- 2d histogram --------------------------------------------------------
 
@@ -48,7 +49,7 @@ public class FastKde {
     System.out.println(bins);
 
     // TODO : implement the sparse matrix, figure out indices
-    INDArray grid = Nd4j.zeros(gridSize, gridSize);
+    INDArray grid = Nd4j.ones(gridSize, gridSize);
     System.out.println("grid");
     System.out.println(grid);
     System.out.println(grid.rows() + ", " + grid.columns());
@@ -89,19 +90,27 @@ public class FastKde {
 
      INDArray kernel = Utilities.getKernel(kernNx, kernNy,
             meshGrid.getValue0(), meshGrid.getValue1(), bandwidth);
+    System.out.println("Kernel Done");
 
     System.out.println(kernel.rows() + ", " + kernel.columns());
+    System.out.println(gridSize);
 
     //------------------------------------------ Produce the kernel density estimate -------------------------------
 
     //TODO : convolveGrid Tests, this might not work as desired
     grid = Utilities.convolveGrid(grid, kernel);
+    System.out.println("Grid Done");
+    System.out.println(grid);
 
     INDArray normalizationFactor = Utilities.getNormalizationFactor(covariance,
             scottsFactor, x.length(), deltaX, deltaY);
+    System.out.println("Normalization Calculatated");
+    System.out.println(normalizationFactor);
 
     grid.diviRowVector(normalizationFactor);
+    System.out.println("Normalization Applied");
 
+    System.out.println(grid);
     return grid;
   }
 
@@ -111,88 +120,6 @@ public class FastKde {
     INDArray weights = Nd4j.create(x.length()).add(1);
 
     return fastKde2d(x, y, 200, false, weights, 1.0);
-  }
-
-  public static void main(String[] args) {
-//    INDArray x = Nd4j.create(new double[] {1, 2, 3});
-//    INDArray y = Nd4j.create(new double[] {4, 5, 6});
-//    INDArray bins = Nd4j.vstack(x, y).transpose();
-//    System.out.println(bins);
-//    System.out.println("----");
-//    bins.subiRowVector(Nd4j.create(new double[] {1, 4}));
-//    System.out.println(bins);
-//    System.out.println("----");
-//    bins.diviRowVector(Nd4j.create(new double[] {1, 1}));
-//    System.out.println(bins);
-//    System.out.println("Bins Array ----");
-//    bins = Transforms.floor(bins).transpose();
-//    System.out.println(bins);
-//    System.out.println("Covariance Matrix ------");
-//    INDArray[] covarianceMatrix = PCA.covarianceMatrix(bins);
-//    INDArray[] covmean = PCA.covarianceMatrix(x);
-//    INDArray cov = covmean[0];
-//    System.out.println(cov);
-
-//    double[][] matrix = new double[][] {
-//            {1., 1.,},
-//            {1., 1.}
-//            };
-//    INDArray A = Nd4j.create(matrix);
-//    System.out.println("A ----");
-//    System.out.println(A);
-//    System.out.println("2 ----");
-//    //System.out.println(A.getDouble(0, 2));
-//    //INDArray[] covarianceMatrix = PCA.covarianceMatrix(a);
-//    //System.out.println(covarianceMatrix[0]);
-//    INDArray[] covMatrix = PCA.covarianceMatrix(A);
-//
-//    System.out.println("Cov ----");
-//    System.out.println(covMatrix[0]);
-//    System.out.println("StdDev Test ------");
-
-//    System.out.println(standardDeviations);
-//    System.out.println(0.8326831776556043 * 2 * BigDecimalMath.PI.doubleValue());
-//    INDArray testArray = Transforms.round(standardDeviations.mul(0.8326831776556043 * 2 * BigDecimalMath.PI.doubleValue()));
-//    System.out.println(testArray);
-//    double[][] matrix = new double[][] {
-//            {6., 4.,},
-//            {2., 8.}
-//    };
-//    INDArray A = Nd4j.create(matrix);
-//    double scottsFactor = 0.823;
-//    INDArray standardDeviations = Nd4j.diag(Transforms.sqrt(A));
-//    INDArray kern_n = Transforms.round(standardDeviations.mul(scottsFactor * 2 * BigDecimalMath.PI.doubleValue()));
-//    double kern_nx = kern_n.getDouble(0, 0);
-//    double kern_ny = kern_n.getDouble(1, 0);
-//    System.out.println(kern_nx);
-//    System.out.println(kern_ny);
-//    INDArray xCoords = Nd4j.arange(kern_nx).sub(kern_nx / 2.0);
-//    System.out.println(xCoords);
-//    INDArray yCoords = Nd4j.arange(kern_ny).sub(kern_ny / 2.0);
-//    System.out.println(yCoords);
-//    System.out.println("________");
-//    INDArray grid = Nd4j.zeros(4, 4);
-//    System.out.println(grid);
-    //TEST FOR MESH GRID BELOW
-//    double[] matrix1 = new double[]
-//            {2.,2.};
-//    double[] matrix2 = new double[]
-//            {1.,3.};
-//    INDArray x = Nd4j.create(matrix1);
-//    INDArray y = Nd4j.create(matrix2);
-    //Pair<INDArray, INDArray> pair = getMeshGrid(x, y);
-    //INDArray kernel = Nd4j.vstack(Nd4j.toFlattened(pair.getValue0()),
-    //        Nd4j.toFlattened(pair.getValue1()));
-    //kernel =
-    //System.out.println(kernel);
-    //double[][] matrix3 = new double[][] {
-    //        {3.,-2.},
-    //        {-1.,2.}
-    //};
-    //INDArray invCov = Nd4j.create(matrix3);
-    //System.out.println(invCov);
-    //Dot dot = new Dot(invCov, invCov);
-    //System.out.println(dot);
   }
 }
 

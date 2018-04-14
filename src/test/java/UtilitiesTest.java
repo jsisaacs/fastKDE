@@ -1,15 +1,13 @@
 import org.javatuples.Pair;
 import org.javatuples.Quartet;
 import org.junit.Test;
+import org.nd4j.autodiff.samediff.SDVariable;
+import org.nd4j.autodiff.samediff.SameDiff;
 import org.nd4j.linalg.api.ndarray.INDArray;
-import org.nd4j.linalg.api.ops.CustomOp;
-import org.nd4j.linalg.api.ops.DynamicCustomOp;
-import org.nd4j.linalg.api.ops.impl.layers.convolution.Conv2D;
 import org.nd4j.linalg.api.ops.impl.layers.convolution.config.Conv2DConfig;
-import org.nd4j.linalg.cpu.nativecpu.NDArray;
-import org.nd4j.linalg.dimensionalityreduction.PCA;
 import org.nd4j.linalg.factory.Nd4j;
-import org.nd4j.linalg.convolution.Convolution;
+
+import java.awt.image.Kernel;
 
 import static org.junit.Assert.assertEquals;
 
@@ -53,6 +51,21 @@ public class UtilitiesTest {
   }
 
   @Test
+  public void gridTest() {
+    INDArray kernel = Nd4j.ones(13, 13);
+    kernel = kernel.mul(4);
+    INDArray grid = Nd4j.ones(514, 514);
+    grid = grid.mul(3);
+    System.out.println(Utilities.convolveGrid(grid, kernel));
+  }
+
+  @Test
+  public void getCOOMatrixTest() {
+
+  }
+
+  //TODO
+  @Test
   public void getCovarianceTest() {
     INDArray x = Nd4j.create(new double[] {1., 2., 3., 4.});
     INDArray y = Nd4j.create(new double[] {5., 6., 7., 8.});
@@ -67,7 +80,11 @@ public class UtilitiesTest {
             y.maxNumber().doubleValue());
 
     System.out.println(Utilities.getBins(x, y, 0.011764705882352941, 0.011764705882352941, extents));
-    assertEquals(covariance, Utilities.getCovariance(Utilities.getBins(x, y, 0.011764705882352941, 0.011764705882352941, extents), false));
+    INDArray covarianceOutput = Utilities.getCovariance(Utilities.getBins(x, y, 0.011764705882352941, 0.011764705882352941, extents), false);
+    System.out.println(covarianceOutput);
+    assertEquals(covariance.getDouble(0, 0), covarianceOutput.getDouble(0, 0), 1);
+
+    //assertEquals(covariance, Utilities.getCovariance(Utilities.getBins(x, y, 0.011764705882352941, 0.011764705882352941, extents), false));
   }
 
   @Test
@@ -156,30 +173,51 @@ public class UtilitiesTest {
 
   @Test
   public void convolveGridTest() {
-//    INDArray grid = Nd4j.ones(3, 3);
-//    INDArray kernel = Nd4j.ones(4, 4);
-//    INDArray output = Nd4j.zeros(6, 6);
-//
-//    assertEquals(output, Utilities.convolveGrid(grid, kernel));
-    INDArray input = Nd4j.create(new double[][]{
-            {3, 2, 5, 6, 7, 8},
-            {5, 4, 2, 10, 8, 1}
-    });
-    INDArray kernel = Nd4j.create(new double[][]{
-            {4, 5},
-            {1, 2}
-    });
-    INDArray output = Nd4j.ones(input.rows(), input.columns());
+    int nIn = 1;
+    int nOut = 1;
+    int kH = 4;
+    int kW = 4;
 
-    CustomOp convolve2d = Conv2D.builder()
-            .sameDiff()
-            .inputFunctions()
-            .inputArrays()
-            .outputs(output)
-            .config(config)
+    int mb = 1;
+    int imgH = 12;
+    int imgW = 12;
+
+    SameDiff sd = SameDiff.create();
+    INDArray wArr = Nd4j.ones(nOut, nIn, kH, kW); //As per DL4J
+    wArr = wArr.mul(4);
+    System.out.println(wArr);
+    System.out.println("==--===");
+    INDArray bArr = Nd4j.ones(1, nOut);
+    System.out.println(bArr);
+    System.out.println("-------");
+    INDArray inArr = Nd4j.ones(mb, nIn, imgH, imgW);
+    inArr = inArr.mul(3);
+    System.out.println(inArr);
+    System.out.println("--------");
+
+    SDVariable in = sd.var("in", inArr);
+    SDVariable w = sd.var("W", wArr);
+    SDVariable b = sd.var("b", bArr);
+
+    //Order: https://github.com/deeplearning4j/libnd4j/blob/6c41ea5528bb1f454e92a9da971de87b93ff521f/include/ops/declarable/generic/convo/conv2d.cpp#L20-L22
+    //in, w, b - bias is optional
+    SDVariable[] vars = new SDVariable[]{in, w, b};
+
+    Conv2DConfig c = Conv2DConfig.builder()
+            .kh(kH).kw(kW)
+            .ph(1).pw(1)
+            .sy(1).sx(1)
+            .dh(1).dw(1)
+            .isSameMode(true)
             .build();
-    Nd4j.getExecutioner().exec(convolve2d);
+    sd.conv2d(vars, c);
+    INDArray outArr = sd.execAndEndResult();
 
+    INDArray grid = Nd4j.ones(12, 12);
+    grid = grid.mul(3);
+    INDArray kernel = Nd4j.ones(4, 4);
+    kernel = kernel.mul(4);
+    assertEquals(outArr, Utilities.convolveGrid(grid, kernel));
   }
 
   @Test
