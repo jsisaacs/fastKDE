@@ -2,23 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db6fe935-bd1b-4364-965e-66b1f0b0db15" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/hs_err_pid11852.log" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/hs_err_pid11877.log" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/hs_err_pid13567.log" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/hs_err_pid13572.log" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/hs_err_pid13586.log" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/hs_err_pid13604.log" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/hs_err_pid13612.log" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/hs_err_pid13618.log" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/hs_err_pid13627.log" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/hs_err_pid13664.log" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/hs_err_pid13713.log" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/hs_err_pid13717.log" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/hs_err_pid13729.log" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/hs_err_pid13734.log" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/hs_err_pid13747.log" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/hs_err_pid13767.log" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/hs_err_pid13781.log" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/FastKde.java" afterPath="$PROJECT_DIR$/src/main/java/FastKde.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Utilities.java" afterPath="$PROJECT_DIR$/src/main/java/Utilities.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/FastKdeTest.java" afterPath="$PROJECT_DIR$/src/test/java/FastKdeTest.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/UtilitiesTest.java" afterPath="$PROJECT_DIR$/src/test/java/UtilitiesTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -65,80 +53,56 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.59942776">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="UtilitiesTest.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/test/java/UtilitiesTest.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-4625">
-                  <caret line="56" column="38" lean-forward="false" selection-start-line="56" selection-start-column="38" selection-end-line="56" selection-end-column="38" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Utilities.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/Utilities.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="138">
-                  <caret line="21" column="63" lean-forward="false" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#2360#2361#0" expanded="true" />
-                    <element signature="e#2414#2415#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="FastKdeTest.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/test/java/FastKdeTest.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="295">
-                  <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="FastKde.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/FastKde.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2359">
-                  <caret line="116" column="8" lean-forward="false" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="8" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="Utilities.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/Utilities.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="255">
-                  <caret line="134" column="24" lean-forward="true" selection-start-line="134" selection-start-column="24" selection-end-line="134" selection-end-column="24" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#2360#2361#0" expanded="true" />
-                    <element signature="e#2414#2415#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="UtilitiesTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/UtilitiesTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-7">
+              <caret line="111" column="41" lean-forward="false" selection-start-line="111" selection-start-column="41" selection-end-line="111" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Utilities.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Utilities.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="177">
+              <caret line="93" column="16" lean-forward="true" selection-start-line="93" selection-start-column="16" selection-end-line="93" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FastKdeTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/FastKdeTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="17" column="6" lean-forward="false" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FastKde.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/FastKde.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="205">
+              <caret line="73" column="39" lean-forward="false" selection-start-line="73" selection-start-column="34" selection-end-line="73" selection-end-column="39" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -173,6 +137,10 @@
       <find>covariance</find>
       <find>convolveGrid</find>
       <find>covar</find>
+      <find>DONE</find>
+      <find>Gridsize:</find>
+      <find>TODO</find>
+      <find>kern</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -540,10 +508,10 @@
         <option value="$PROJECT_DIR$/src/main/java/FastKdeHelper.java" />
         <option value="$PROJECT_DIR$/src/test/java/FastKdeTestSuite.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/test/java/UtilitiesTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Utilities.java" />
         <option value="$PROJECT_DIR$/src/test/java/FastKdeTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/UtilitiesTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/FastKde.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Utilities.java" />
       </list>
     </option>
   </component>
@@ -560,8 +528,7 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1" />
-    <option name="width" value="1440" />
+    <option name="width" value="659" />
     <option name="height" value="900" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -666,8 +633,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -675,19 +642,37 @@
               <item name="fastKde" type="b2602c69:ProjectViewProjectNode" />
               <item name="fastKde" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
+            <path>
+              <item name="fastKde" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fastKde" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fastKde" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fastKde" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="fastKde" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fastKde" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
@@ -769,14 +754,14 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="UtilitiesTest.convolveGridTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UtilitiesTest.diagTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="fastKde_test" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="UtilitiesTest" />
-      <option name="METHOD_NAME" value="convolveGridTest" />
+      <option name="METHOD_NAME" value="diagTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -893,16 +878,16 @@
       <item index="0" class="java.lang.String" itemvalue="JUnit.FastKdeTest.inputXYWeightsDimenstionTest" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.UtilitiesTest.getCovarianceTest" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.UtilitiesTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.UtilitiesTest.convolveGridTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.UtilitiesTest.gridTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.UtilitiesTest.gridTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.UtilitiesTest.diagTest" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JUnit.FastKdeTest.inputXYWeightsDimenstionTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.UtilitiesTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.UtilitiesTest.getCovarianceTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.UtilitiesTest.gridTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.UtilitiesTest.convolveGridTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.UtilitiesTest.diagTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.UtilitiesTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.UtilitiesTest.getCovarianceTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.UtilitiesTest.gridTest" />
       </list>
     </recent_temporary>
   </component>
@@ -945,63 +930,65 @@
       <workItem from="1523500406661" duration="11526000" />
       <workItem from="1523580076883" duration="9284000" />
       <workItem from="1523638867626" duration="731000" />
-      <workItem from="1523673623649" duration="21335000" />
+      <workItem from="1523673623649" duration="21707000" />
+      <workItem from="1523892969632" duration="52000" />
+      <workItem from="1523898931359" duration="6246000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FastKdeTest_inputXYWeightsDimenstionTest - 2018.04.14 at 16h 45m 49s.xml">
+    <history-entry file="FastKdeTest_inputXYWeightsDimenstionTest - 2018.04.16 at 15h 05m 57s.xml">
       <configuration name="FastKdeTest.inputXYWeightsDimenstionTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FastKdeTest_inputXYWeightsDimenstionTest - 2018.04.14 at 16h 46m 50s.xml">
+    <history-entry file="FastKdeTest_inputXYWeightsDimenstionTest - 2018.04.16 at 15h 06m 46s.xml">
       <configuration name="FastKdeTest.inputXYWeightsDimenstionTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FastKdeTest_inputXYWeightsDimenstionTest - 2018.04.14 at 16h 48m 07s.xml">
+    <history-entry file="FastKdeTest_inputXYWeightsDimenstionTest - 2018.04.16 at 15h 08m 29s.xml">
       <configuration name="FastKdeTest.inputXYWeightsDimenstionTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FastKdeTest_inputXYWeightsDimenstionTest - 2018.04.14 at 16h 48m 21s.xml">
+    <history-entry file="FastKdeTest_inputXYWeightsDimenstionTest - 2018.04.16 at 15h 09m 07s.xml">
       <configuration name="FastKdeTest.inputXYWeightsDimenstionTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FastKdeTest_inputXYWeightsDimenstionTest - 2018.04.14 at 16h 48m 59s.xml">
+    <history-entry file="FastKdeTest_inputXYWeightsDimenstionTest - 2018.04.16 at 15h 10m 24s.xml">
       <configuration name="FastKdeTest.inputXYWeightsDimenstionTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FastKdeTest_inputXYWeightsDimenstionTest - 2018.04.14 at 16h 49m 18s.xml">
+    <history-entry file="FastKdeTest_inputXYWeightsDimenstionTest - 2018.04.16 at 15h 21m 44s.xml">
       <configuration name="FastKdeTest.inputXYWeightsDimenstionTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FastKdeTest_inputXYWeightsDimenstionTest - 2018.04.14 at 16h 49m 50s.xml">
+    <history-entry file="FastKdeTest_inputXYWeightsDimenstionTest - 2018.04.16 at 15h 22m 04s.xml">
       <configuration name="FastKdeTest.inputXYWeightsDimenstionTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FastKdeTest_inputXYWeightsDimenstionTest - 2018.04.14 at 16h 50m 16s.xml">
+    <history-entry file="FastKdeTest_inputXYWeightsDimenstionTest - 2018.04.16 at 15h 22m 35s.xml">
       <configuration name="FastKdeTest.inputXYWeightsDimenstionTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FastKdeTest_inputXYWeightsDimenstionTest - 2018.04.14 at 16h 52m 07s.xml">
+    <history-entry file="FastKdeTest_inputXYWeightsDimenstionTest - 2018.04.16 at 15h 23m 44s.xml">
       <configuration name="FastKdeTest.inputXYWeightsDimenstionTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FastKdeTest_inputXYWeightsDimenstionTest - 2018.04.14 at 16h 52m 32s.xml">
+    <history-entry file="FastKdeTest_inputXYWeightsDimenstionTest - 2018.04.16 at 15h 23m 55s.xml">
       <configuration name="FastKdeTest.inputXYWeightsDimenstionTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124245000" />
+    <option name="totallyTimeSpent" value="130915000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="0" width="659" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32527205" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32487923" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936507" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5055901" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5169082" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16523606" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16388467" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991803" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921347" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32888147" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1056,8 +1043,8 @@
           <caret line="126" column="0" lean-forward="true" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2360#2361#0" expanded="true" />
-            <element signature="e#2414#2415#0" expanded="true" />
+            <element signature="e#2722#2723#0" expanded="false" />
+            <element signature="e#3192#3193#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1078,8 +1065,8 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2360#2361#0" expanded="true" />
-            <element signature="e#2414#2415#0" expanded="true" />
+            <element signature="e#2722#2723#0" expanded="false" />
+            <element signature="e#3192#3193#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1110,8 +1097,8 @@
           <caret line="71" column="44" lean-forward="false" selection-start-line="71" selection-start-column="44" selection-end-line="71" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2360#2361#0" expanded="true" />
-            <element signature="e#2414#2415#0" expanded="true" />
+            <element signature="e#2722#2723#0" expanded="false" />
+            <element signature="e#3192#3193#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1149,8 +1136,8 @@
           <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2360#2361#0" expanded="true" />
-            <element signature="e#2414#2415#0" expanded="true" />
+            <element signature="e#2722#2723#0" expanded="false" />
+            <element signature="e#3192#3193#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1188,8 +1175,8 @@
           <caret line="60" column="3" lean-forward="false" selection-start-line="60" selection-start-column="3" selection-end-line="60" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2360#2361#0" expanded="true" />
-            <element signature="e#2414#2415#0" expanded="true" />
+            <element signature="e#2722#2723#0" expanded="false" />
+            <element signature="e#3192#3193#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1210,8 +1197,8 @@
           <caret line="60" column="3" lean-forward="false" selection-start-line="60" selection-start-column="3" selection-end-line="60" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2360#2361#0" expanded="true" />
-            <element signature="e#2414#2415#0" expanded="true" />
+            <element signature="e#2722#2723#0" expanded="false" />
+            <element signature="e#3192#3193#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1412,20 +1399,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Utilities.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="21" column="63" lean-forward="false" selection-start-line="21" selection-start-column="63" selection-end-line="21" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2360#2361#0" expanded="true" />
-            <element signature="e#2414#2415#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/FastKdeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="177">
+          <caret line="93" column="16" lean-forward="true" selection-start-line="93" selection-start-column="16" selection-end-line="93" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1434,8 +1409,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/UtilitiesTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4625">
-          <caret line="56" column="38" lean-forward="false" selection-start-line="56" selection-start-column="38" selection-end-line="56" selection-end-column="38" />
+        <state relative-caret-position="-7">
+          <caret line="111" column="41" lean-forward="false" selection-start-line="111" selection-start-column="41" selection-end-line="111" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/FastKdeTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="6" lean-forward="false" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1444,8 +1429,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/FastKde.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2359">
-          <caret line="116" column="8" lean-forward="false" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="8" />
+        <state relative-caret-position="205">
+          <caret line="73" column="39" lean-forward="false" selection-start-line="73" selection-start-column="34" selection-end-line="73" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

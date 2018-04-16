@@ -1,17 +1,21 @@
 import com.google.common.math.DoubleMath;
+import org.apache.commons.math3.linear.RealMatrix;
 import org.javatuples.Pair;
 import org.javatuples.Quartet;
 import org.nd4j.autodiff.samediff.SDVariable;
 import org.nd4j.autodiff.samediff.SameDiff;
 import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.api.ops.impl.accum.StandardDeviation;
 import org.nd4j.linalg.api.ops.impl.layers.convolution.config.Conv2DConfig;
-import org.nd4j.linalg.dimensionalityreduction.PCA;
 import org.nd4j.linalg.factory.Nd4j;
 import org.nd4j.linalg.inverse.InvertMatrix;
 import org.nd4j.linalg.ops.transforms.Transforms;
 import org.nd4j.linalg.util.BigDecimalMath;
 import org.nd4j.linalg.api.ops.DynamicCustomOp;
 import org.nd4j.linalg.api.ops.CustomOp;
+import org.apache.commons.math3.stat.correlation.Covariance;
+
+import java.util.Arrays;
 
 public class Utilities {
   public static int optimizeGridSize(int gridSize,
@@ -19,9 +23,8 @@ public class Utilities {
     if (gridSize <= 0 || xLength <= 0) {
       throw new IllegalArgumentException("Arguments must be greater than 0.");
     }
-    //514 because 512 returns an error for convolve2d, pairwise
-    if(gridSize == 200) {
-      gridSize = Math.max(xLength, 514);
+    if(gridSize == 1) {
+      gridSize = Math.max(xLength, 512);
     }
     gridSize = (int) Math.pow(2, Math.ceil(DoubleMath.log2(gridSize)));
     return gridSize;
@@ -42,9 +45,17 @@ public class Utilities {
   public static INDArray getCovariance(INDArray bins,
                                        boolean noCorrelation) {
     bins = bins.transpose();
-    INDArray[] covarianceMatrix = PCA.covarianceMatrix(bins);
-    INDArray covariance = covarianceMatrix[0];
-    covariance = covariance.div(10000);
+
+    double[][] binsArray = new double[bins.rows()][bins.columns()];
+    for (int i = 0; i < bins.rows(); i++) {
+      for (int j = 0; j < bins.columns(); j++) {
+        binsArray[i][j] = bins.getDouble(i, j);
+      }
+    }
+    Covariance apacheCommonsCovariance = new Covariance(binsArray);
+    RealMatrix rm = apacheCommonsCovariance.getCovarianceMatrix();
+    rm.getData();
+    INDArray covariance = Nd4j.create(rm.getData());
 
     if (noCorrelation) {
       covariance.putScalar(new int[] {1,0}, 0.0);
@@ -60,7 +71,22 @@ public class Utilities {
   }
 
   public static INDArray getStandardDeviations(INDArray covariance) {
-    return Transforms.sqrt(covariance).getRow(0);
+    INDArray sqrt = Transforms.sqrt(covariance);
+
+    double[][] sqrtArray = new double[sqrt.rows()][sqrt.columns()];
+    double[] diagonalArray = new double[sqrt.rows()];
+
+    for (int i = 0; i < sqrt.rows(); i++) {
+      for (int j = 0; j < sqrt.columns(); j++) {
+        sqrtArray[i][j] = sqrt.getDouble(i, j);
+      }
+    }
+
+    for (int i = 0; i < sqrtArray.length; i++) {
+      diagonalArray[i] = sqrtArray[i][i];
+    }
+
+    return Nd4j.create(diagonalArray);
   }
 
   public static INDArray getKernN(INDArray standardDeviations,
@@ -137,10 +163,9 @@ public class Utilities {
             .isSameMode(true)
             .build();
     sd.conv2d(vars, c);
-    System.out.println("DONE");
     return sd.execAndEndResult();
   }
-  //TODO
+
   public static INDArray getNormalizationFactor(INDArray covariance,
                                                 double scottsFactor,
                                                 int n,

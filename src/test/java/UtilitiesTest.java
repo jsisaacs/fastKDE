@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.nd4j.autodiff.samediff.SDVariable;
 import org.nd4j.autodiff.samediff.SameDiff;
 import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.api.ops.DynamicCustomOp;
 import org.nd4j.linalg.api.ops.impl.layers.convolution.config.Conv2DConfig;
 import org.nd4j.linalg.factory.Nd4j;
 
@@ -102,6 +103,25 @@ public class UtilitiesTest {
     });
     INDArray standardDeviations = Nd4j.create(new double[] {109.73452814, 109.73452814});
     assertEquals(standardDeviations, Utilities.getStandardDeviations(covariance));
+  }
+
+  @Test
+  public void diagTest() {
+    SameDiff sd = SameDiff.create();
+
+    INDArray ia = Nd4j.create(new float[]{4, 2});
+    SDVariable in = sd.var("in", new int[]{1, 2});
+    INDArray expOut = Nd4j.create(new int[]{2, 2});
+    DynamicCustomOp diag = DynamicCustomOp.builder("diag").addInputs(ia).addOutputs(expOut).build();
+    Nd4j.getExecutioner().exec(diag);
+    SDVariable t = sd.diag(in);
+
+    SDVariable loss = sd.max("loss", t, 0, 1);
+
+    sd.associateArrayWithVariable(ia, in);
+    sd.exec();
+    INDArray out = t.getArr();
+    System.out.println(out);
   }
 
   @Test
