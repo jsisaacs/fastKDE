@@ -9,8 +9,6 @@ import org.nd4j.linalg.indexing.NDArrayIndex;
 import org.nd4j.linalg.api.ops.DynamicCustomOp;
 import org.nd4j.linalg.api.ops.impl.layers.convolution.config.Conv2DConfig;
 import org.nd4j.linalg.factory.Nd4j;
-
-import java.awt.image.Kernel;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
@@ -49,9 +47,6 @@ public class UtilitiesTest {
             y.minNumber().doubleValue(),
             y.maxNumber().doubleValue());
     assertEquals(bins, Utilities.getBins(x, y, 0.011764705882352941, 0.011764705882352941, extents));
-
-    //large inputs
-    //TODO
   }
 
   @Test
@@ -68,7 +63,6 @@ public class UtilitiesTest {
 
   }
 
-  //TODO
   @Test
   public void getCovarianceTest() {
     INDArray x = Nd4j.create(new double[] {1., 2., 3., 4.});

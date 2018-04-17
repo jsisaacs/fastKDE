@@ -4,9 +4,7 @@ import org.javatuples.Pair;
 import org.javatuples.Quartet;
 import org.nd4j.autodiff.samediff.SDVariable;
 import org.nd4j.autodiff.samediff.SameDiff;
-import org.nd4j.linalg.api.ndarray.BaseSparseNDArrayCOO;
 import org.nd4j.linalg.api.ndarray.INDArray;
-import org.nd4j.linalg.api.ops.impl.accum.StandardDeviation;
 import org.nd4j.linalg.api.ops.impl.layers.convolution.config.Conv2DConfig;
 import org.nd4j.linalg.factory.Nd4j;
 import org.nd4j.linalg.inverse.InvertMatrix;
@@ -17,6 +15,29 @@ import org.nd4j.linalg.api.ops.CustomOp;
 import org.apache.commons.math3.stat.correlation.Covariance;
 
 import java.util.Arrays;
+
+/*
+The MIT License (MIT)
+
+Copyright (c) 2018 Joshua Isaacson, Morgan Fouesneau & contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
 
 public class Utilities {
   public static int optimizeGridSize(int gridSize,
@@ -151,12 +172,8 @@ public class Utilities {
     SameDiff sd = SameDiff.create();
 
     INDArray wArr = kernel.reshape(nOut, nIn, kH, kW);
-    System.out.println("Kernel Shape: " + Arrays.toString(wArr.shape()));
 
     INDArray inArr = grid.reshape(mb, nIn, imgH, imgW);
-    System.out.println("Input Shape: " + Arrays.toString(inArr.shape()));
-
-    System.out.println("Arrays setup DONE");
 
     SDVariable in = sd.var("in", inArr);
     SDVariable w = sd.var("W", wArr);
@@ -167,11 +184,10 @@ public class Utilities {
             .kh(kH).kw(kW) //kernel attributes
             .ph(0).pw(0)   //padding
             .sy(1).sx(1)   //stride
-            .dh(1).dw(1)   //dilations
+            .dh(1).dw(1)   //dilation
             .isSameMode(true)
             .build();
     sd.conv2d(vars, c);
-    System.out.println("DONE");
     return sd.execAndEndResult();
   }
 
