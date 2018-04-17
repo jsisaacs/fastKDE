@@ -7,6 +7,30 @@ import sun.rmi.rmic.iiop.IDLNames;
 
 import java.util.Arrays;
 
+/*
+The MIT License (MIT)
+
+Copyright (c) 2018 Joshua Isaacson, Morgan Fouesneau & contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+
 public class FastKde {
 
   public static INDArray fastKde2d(
@@ -61,6 +85,7 @@ public class FastKde {
     //------------------------------------------ Kernel preliminary calculations -----------------------------------
 
     INDArray covariance = Utilities.getCovariance(bins, noCorrelation);
+    covariance = covariance.div(0.1);
     double scottsFactor = Utilities.getScottsFactor(x.length(), adjust);
     System.out.println("Covariance:");
     System.out.println(covariance);
@@ -86,7 +111,7 @@ public class FastKde {
     Pair<INDArray, INDArray> meshGrid = Utilities.getMeshGrid(xCoords, yCoords);
     System.out.println("Meshgrid: (" + meshGrid.getValue0().rows() + ", " + meshGrid.getValue0().columns() + "), (" + meshGrid.getValue1().rows() + ", " + meshGrid.getValue1().columns() + ")" );
 
-     INDArray kernel = Utilities.getKernel(kernNx, kernNy,
+    INDArray kernel = Utilities.getKernel(kernNx, kernNy,
             meshGrid.getValue0(), meshGrid.getValue1(), bandwidth);
     System.out.println("Kernel:");
     System.out.println("(" + kernel.rows() + ", " + kernel.columns() + ")");
@@ -111,6 +136,8 @@ public class FastKde {
     grid = grid.reshape(gridSize, gridSize);
     //System.out.println("(" + grid.rows() + ", " + grid.columns() + ")");
 //    System.out.println(grid);
+    Nd4j.rot90(grid);
+
     return grid;
   }
 
