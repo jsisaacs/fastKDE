@@ -2,6 +2,9 @@ import org.junit.Test;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static org.junit.Assert.assertEquals;
 
 public class FastKdeTest {
@@ -17,6 +20,14 @@ public class FastKdeTest {
     INDArray y = Nd4j.create(new double[] {0.7747,    0.7053,    0.5655,    0.6056,    0.1807,    0.0696,    0.1127,    0.4404,    0.6015,    0.6682});
     //System.out.println(y);
     INDArray grid = FastKde.fastKde2d(x, y);
-
+    ArrayList<Double> list = new ArrayList<>();
+    for (int i = 0; i < 258; i++) {
+      for (int j = 0; j < 258; j++) {
+        if (grid.getDouble(i, j) != 0) {
+          list.add(grid.getDouble(i, j));
+        }
+      }
+    }
+    System.out.println(list);
   }
 }

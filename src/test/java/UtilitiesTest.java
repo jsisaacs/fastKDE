@@ -4,11 +4,14 @@ import org.junit.Test;
 import org.nd4j.autodiff.samediff.SDVariable;
 import org.nd4j.autodiff.samediff.SameDiff;
 import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.api.ndarray.BaseSparseNDArrayCOO;
+import org.nd4j.linalg.indexing.NDArrayIndex;
 import org.nd4j.linalg.api.ops.DynamicCustomOp;
 import org.nd4j.linalg.api.ops.impl.layers.convolution.config.Conv2DConfig;
 import org.nd4j.linalg.factory.Nd4j;
 
 import java.awt.image.Kernel;
+import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 
@@ -89,6 +92,60 @@ public class UtilitiesTest {
   }
 
   @Test
+  public void getShapeTest() {
+    INDArray test = Nd4j.create(new double[][] {
+            {1., 2.},
+            {3., 4.}
+    });
+
+    System.out.println(test);
+
+//    test = test.reshape(1, 1, 2, 2);
+//    System.out.println(test);
+  }
+
+  @Test
+  public void getConvolutionTest() {
+    int nIn = 1;
+    int nOut = 1;
+    int kH = 4;
+    int kW = 3;
+
+    int mb = 1;
+    int imgH = 1024 + 2;
+    int imgW = 1024 + 2;
+
+    SameDiff sd = SameDiff.create();
+    INDArray wArr = Nd4j.ones(nOut, nIn, kH, kW); //As per DL4J
+    wArr = wArr.mul(3);
+    System.out.println(Arrays.toString(wArr.shape()));
+
+    INDArray inArr = Nd4j.ones(mb, nIn, imgH, imgW);
+    inArr = inArr.mul(5);
+    System.out.println(Arrays.toString(inArr.shape()));
+
+    SDVariable in = sd.var("in", inArr);
+    SDVariable w = sd.var("W", wArr);
+
+    //Order: https://github.com/deeplearning4j/libnd4j/blob/6c41ea5528bb1f454e92a9da971de87b93ff521f/include/ops/declarable/generic/convo/conv2d.cpp#L20-L22
+    //in, w, b - bias is optional
+    SDVariable[] vars = new SDVariable[]{in, w};
+
+    Conv2DConfig c = Conv2DConfig.builder()
+            .kh(kH).kw(kW)
+            .ph(0).pw(0)
+            .sy(1).sx(1)
+            .dh(1).dw(1)
+            .isSameMode(true)
+            .build();
+
+    SDVariable out = sd.conv2d(vars, c);
+
+    INDArray outArr = sd.execAndEndResult();
+    System.out.println(Arrays.toString(outArr.shape()));
+  }
+
+  @Test
   public void getScottsFactorTest() {
     INDArray x = Nd4j.create(new double[] {1., 2., 3., 4.});
     double adjust = 1.;
@@ -106,22 +163,16 @@ public class UtilitiesTest {
   }
 
   @Test
-  public void diagTest() {
-    SameDiff sd = SameDiff.create();
+  public void getCooMatrixTest() {
+    INDArray weights = Nd4j.ones(10);
+    INDArray bins = Nd4j.create(new double[][] {
+            {85.0000,  255.0000,   98.0000,  181.0000, 0.,   44.0000,  179.0000,  212.0000,   97.0000,  134.0000},
+            {255.0000,  229.0000,  179.0000,  193.0000,   40.0000,         0.,   15.0000,  134.0000,  192.0000,  216.0000}
+    });
+    int gridSize = 256;
 
-    INDArray ia = Nd4j.create(new float[]{4, 2});
-    SDVariable in = sd.var("in", new int[]{1, 2});
-    INDArray expOut = Nd4j.create(new int[]{2, 2});
-    DynamicCustomOp diag = DynamicCustomOp.builder("diag").addInputs(ia).addOutputs(expOut).build();
-    Nd4j.getExecutioner().exec(diag);
-    SDVariable t = sd.diag(in);
-
-    SDVariable loss = sd.max("loss", t, 0, 1);
-
-    sd.associateArrayWithVariable(ia, in);
-    sd.exec();
-    INDArray out = t.getArr();
-    System.out.println(out);
+    assertEquals(gridSize, Utilities.getCooMatrix(weights, bins, gridSize).rows());
+    assertEquals(gridSize, Utilities.getCooMatrix(weights, bins, gridSize).columns());
   }
 
   @Test

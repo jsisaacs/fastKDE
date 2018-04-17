@@ -4,6 +4,7 @@ import org.javatuples.Pair;
 import org.javatuples.Quartet;
 import org.nd4j.autodiff.samediff.SDVariable;
 import org.nd4j.autodiff.samediff.SameDiff;
+import org.nd4j.linalg.api.ndarray.BaseSparseNDArrayCOO;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.api.ops.impl.accum.StandardDeviation;
 import org.nd4j.linalg.api.ops.impl.layers.convolution.config.Conv2DConfig;
@@ -42,16 +43,27 @@ public class Utilities {
     return bins;
   }
 
+  //TODO
+  public static INDArray getCooMatrix(INDArray weights, INDArray bins, int gridSize) {
+    double[] weightsArray = new double[weights.columns()];
+
+    for (int i = 0; i < weights.rows(); i++) {
+      weightsArray[i] = weights.getDouble(i);
+    }
+
+    int[][] indices = bins.toIntMatrix();
+
+    int[] shape = new int[] {gridSize, gridSize};
+
+    return Nd4j.createSparseCOO(weightsArray, indices, shape).toDense();
+  }
+
   public static INDArray getCovariance(INDArray bins,
                                        boolean noCorrelation) {
     bins = bins.transpose();
 
-    double[][] binsArray = new double[bins.rows()][bins.columns()];
-    for (int i = 0; i < bins.rows(); i++) {
-      for (int j = 0; j < bins.columns(); j++) {
-        binsArray[i][j] = bins.getDouble(i, j);
-      }
-    }
+    double[][] binsArray = bins.toDoubleMatrix();
+
     Covariance apacheCommonsCovariance = new Covariance(binsArray);
     RealMatrix rm = apacheCommonsCovariance.getCovarianceMatrix();
     rm.getData();
@@ -62,7 +74,7 @@ public class Utilities {
       covariance.putScalar(new int[] {0,1}, 0.0);
     }
 
-    return covariance;
+    return covariance.div(10000);
   }
 
   public static double getScottsFactor(int xLength,
@@ -73,14 +85,8 @@ public class Utilities {
   public static INDArray getStandardDeviations(INDArray covariance) {
     INDArray sqrt = Transforms.sqrt(covariance);
 
-    double[][] sqrtArray = new double[sqrt.rows()][sqrt.columns()];
+    double[][] sqrtArray = sqrt.toDoubleMatrix();
     double[] diagonalArray = new double[sqrt.rows()];
-
-    for (int i = 0; i < sqrt.rows(); i++) {
-      for (int j = 0; j < sqrt.columns(); j++) {
-        sqrtArray[i][j] = sqrt.getDouble(i, j);
-      }
-    }
 
     for (int i = 0; i < sqrtArray.length; i++) {
       diagonalArray[i] = sqrtArray[i][i];
@@ -143,26 +149,29 @@ public class Utilities {
     int imgW = grid.columns();
 
     SameDiff sd = SameDiff.create();
-    INDArray wArr = Nd4j.ones(nOut, nIn, kH, kW);
-    wArr = wArr.mul(kernel);
-    INDArray bArr = Nd4j.ones(1, nOut);
-    INDArray inArr = Nd4j.ones(mb, nIn, imgH, imgW);
-    inArr = inArr.mul(grid);
+
+    INDArray wArr = kernel.reshape(nOut, nIn, kH, kW);
+    System.out.println("Kernel Shape: " + Arrays.toString(wArr.shape()));
+
+    INDArray inArr = grid.reshape(mb, nIn, imgH, imgW);
+    System.out.println("Input Shape: " + Arrays.toString(inArr.shape()));
+
+    System.out.println("Arrays setup DONE");
 
     SDVariable in = sd.var("in", inArr);
     SDVariable w = sd.var("W", wArr);
-    SDVariable b = sd.var("b", bArr);
 
-    SDVariable[] vars = new SDVariable[]{in, w, b};
+    SDVariable[] vars = new SDVariable[]{in, w};
 
     Conv2DConfig c = Conv2DConfig.builder()
-            .kh(kH).kw(kW)
-            .ph(0).pw(0)
-            .sy(1).sx(1)
-            .dh(1).dw(1)
+            .kh(kH).kw(kW) //kernel attributes
+            .ph(0).pw(0)   //padding
+            .sy(1).sx(1)   //stride
+            .dh(1).dw(1)   //dilations
             .isSameMode(true)
             .build();
     sd.conv2d(vars, c);
+    System.out.println("DONE");
     return sd.execAndEndResult();
   }
 

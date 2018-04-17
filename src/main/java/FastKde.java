@@ -2,6 +2,10 @@ import org.javatuples.Pair;
 import org.javatuples.Quartet;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
+import org.nd4j.linalg.util.NioUtil;
+import sun.rmi.rmic.iiop.IDLNames;
+
+import java.util.Arrays;
 
 public class FastKde {
 
@@ -30,8 +34,7 @@ public class FastKde {
 
     //---------------------------------------- Optimize grid size --------------------------------------------------
 
-    gridSize = Utilities.optimizeGridSize(gridSize, x.length());
-
+    gridSize = Utilities.optimizeGridSize(gridSize, x.length()) + 2;
     System.out.println("Gridsize: " + gridSize);
 
     //---------------------------------------- 2d histogram --------------------------------------------------------
@@ -52,10 +55,8 @@ public class FastKde {
     System.out.println("bins: ");
     System.out.println(bins);
 
-    // TODO : implement the sparse matrix, figure out indices
-    INDArray grid = Nd4j.ones(gridSize, gridSize);
-
-    //INDArray grid = Nd4j.createSparseCOO( , gridIndices, new int[] {gridSize, gridSize});
+    INDArray grid = Utilities.getCooMatrix(weights, bins, gridSize);
+    //System.out.println("Grid: (" + grid.rows() + ", " + grid.columns() + ")");
 
     //------------------------------------------ Kernel preliminary calculations -----------------------------------
 
@@ -73,9 +74,8 @@ public class FastKde {
 
     INDArray kernN = Utilities.getKernN(standardDeviations, scottsFactor);
     double kernNx = kernN.getDouble(0, 0);
-    double kernNy = kernN.getDouble(1, 0);
-    System.out.println("kern_nx: " + kernNx);
-    System.out.println("kern_ny: " + kernNy);
+    double kernNy = kernN.getDouble(0, 1);
+    System.out.println("kern_N: " + kernN);
 
     INDArray bandwidth = Utilities.getBandwidth(covariance, scottsFactor);
     System.out.println("Bandwidth:");
@@ -93,20 +93,24 @@ public class FastKde {
 
     //------------------------------------------ Produce the kernel density estimate -------------------------------
 
+    System.out.println("Grid: (" + grid.rows() + ", " + grid.columns() + ")");
+
     //TODO : convolveGrid Tests, this might not work as desired
     grid = Utilities.convolveGrid(grid, kernel);
-    System.out.println("Grid Before Norm:");
-    System.out.println("(" + grid.rows() + ", " + grid.columns() + ")");
+//    System.out.println("Grid Before Norm:");
+//    System.out.println("(" + grid.rows() + ", " + grid.columns() + ")");
 
     INDArray normalizationFactor = Utilities.getNormalizationFactor(covariance,
             scottsFactor, x.length(), deltaX, deltaY);
-    System.out.println("Normalization Factor: " + normalizationFactor);
+    //System.out.println("Normalization Factor: " + normalizationFactor);
 
-    grid.diviRowVector(normalizationFactor);
-    System.out.println("Grid After Norm:");
-    System.out.println("(" + grid.rows() + ", " + grid.columns() + ")");
-    System.out.println(grid);
-
+    grid = grid.div(normalizationFactor);
+    //grid = grid.diviRowVector(normalizationFactor);
+//    System.out.println("Grid After Norm:");
+    //System.out.println(Arrays.toString(grid.shape()));
+    grid = grid.reshape(gridSize, gridSize);
+    //System.out.println("(" + grid.rows() + ", " + grid.columns() + ")");
+//    System.out.println(grid);
     return grid;
   }
 
